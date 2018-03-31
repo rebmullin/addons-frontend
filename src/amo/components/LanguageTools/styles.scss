@@ -32,6 +32,11 @@ $cell-padding: 6px;
   padding: 0;
 }
 
+// We target tags and some very specific classNames (which we tend to avoid
+// doing in our styles) because this needs to override rules set by
+// `react-super-responsive-table`, which gives us the awesome responsive
+// table used on this page but sets some unfortunate default border/padding
+// values.
 .LanguageTools-table.responsiveTable {
   tbody tr {
     border: 1px solid $grey-30;
