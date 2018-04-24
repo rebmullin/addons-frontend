@@ -50,12 +50,18 @@ export class RatingBase extends React.Component {
   }
 
   renderRatings() {
-    const { readOnly } = this.props;
+    const { readOnly, i18n } = this.props;
     // Accept falsey values as if they are zeroes.
     const rating = this.props.rating || 0;
 
     return [1, 2, 3, 4, 5].map((thisRating) => {
+      const title = i18n.sprintf(
+        i18n.gettext('Click to rate this add-on %(thisRating)s out of 5'),
+        { thisRating }
+      );
       const props = {
+        title,
+        'aria-label': title,
         className: makeClassName('Rating-choice', {
           'Rating-selected-star': rating && thisRating <= rating,
           // Half stars are the result of averages rounded to the nearest
